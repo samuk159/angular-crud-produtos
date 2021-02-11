@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Produto } from './produto.model';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'crud-produtos';
+  produtos: Produto[] = [];
+
+  constructor() {
+    this.produtos.push(new Produto("Camiseta", 30.99));
+    this.produtos.push(new Produto("Calça Jeans", 100.99));
+  }
 }
