@@ -5,11 +5,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PrecoPipe } from './preco.pipe';
 import { FormsModule } from '@angular/forms';
+import { ListaDeProdutosComponent } from './lista-de-produtos/lista-de-produtos.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PrecoPipe
+    PrecoPipe,
+    ListaDeProdutosComponent
   ],
   imports: [
     BrowserModule,

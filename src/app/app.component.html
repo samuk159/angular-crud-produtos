@@ -9,20 +9,8 @@
 <br><br>
 <button (click)="salvar()">Salvar</button>
 
-<h1>Lista de Produtos</h1>
-
-<table>
-  <tr>
-    <th>Nome</th>
-    <th>Preço</th>
-    <th>Ações</th>
-  </tr>
-  <tr *ngFor="let produto of produtos; let i = index">
-    <td>{{produto.nome}}</td>
-    <td>{{produto.preco | preco}}</td>
-    <td>
-      <button (click)="editar(i)">Editar</button>
-      <button (click)="excluir(i)">Excluír</button>
-    </td>
-  </tr>
-</table>
+<app-lista-de-produtos 
+  [produtos]="produtos"
+  (editar)="editar($event)"
+  (excluir)="excluir($event)"
+></app-lista-de-produtos>

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Produto } from './produto.model';
 
 @Component({
@@ -6,13 +6,15 @@ import { Produto } from './produto.model';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 
   produtos: Produto[] = [];
   produto: Produto = new Produto(null, null);
   indiceEdicao = -1;
 
-  constructor() {
+  constructor() {}
+
+  ngOnInit() {
     this.produtos.push(new Produto("Camiseta", 30.99));
     this.produtos.push(new Produto("Calça Jeans", 100.99));
   }
