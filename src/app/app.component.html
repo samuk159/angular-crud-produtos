@@ -1,12 +1,28 @@
+<h1 *ngIf="indiceEdicao == -1">Adicionar produto</h1>
+<h1 *ngIf="indiceEdicao > -1">Editar produto</h1>
+
+<label>Nome:</label>
+<input type="text" [(ngModel)]="produto.nome">
+<br><br>
+<label>Preço:</label>
+<input type="text" [(ngModel)]="produto.preco">
+<br><br>
+<button (click)="salvar()">Salvar</button>
+
 <h1>Lista de Produtos</h1>
 
 <table>
   <tr>
     <th>Nome</th>
     <th>Preço</th>
+    <th>Ações</th>
   </tr>
-  <tr *ngFor="let produto of produtos">
+  <tr *ngFor="let produto of produtos; let i = index">
     <td>{{produto.nome}}</td>
     <td>{{produto.preco | preco}}</td>
+    <td>
+      <button (click)="editar(i)">Editar</button>
+      <button (click)="excluir(i)">Excluír</button>
+    </td>
   </tr>
 </table>
