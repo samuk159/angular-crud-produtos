@@ -1,17 +1,33 @@
-<h1>Lista de Produtos</h1>
-
-<table>
-  <tr>
-    <th>Nome</th>
-    <th>Preço</th>
-    <th>Ações</th>
-  </tr>
-  <tr *ngFor="let produto of produtos; let i = index">
-    <td>{{produto.nome}}</td>
-    <td>{{produto.preco | preco}}</td>
-    <td>
-      <button (click)="editar.emit(i)">Editar</button>
-      <button (click)="excluir.emit(i)">Excluír</button>
-    </td>
-  </tr>
-</table>
+<div class="card">
+    <div class="card-header">
+        <h5>Lista de Produtos</h5>
+    </div>
+    <div class="card-body">
+        <table class="table">
+            <tr>
+                <th>Nome</th>
+                <th>Preço</th>
+                <th>Ações</th>
+            </tr>
+            <tr *ngFor="let produto of produtos; let i = index">
+                <td>{{produto.nome}}</td>
+                <td>
+                    <span class="font-weight-bold mr-1">
+                        R$: 
+                    </span>
+                    {{produto.preco | preco}}
+                </td>
+                <td>
+                    <button (click)="editar.emit(i)"
+                        class="btn btn-primary mr-1">
+                        Editar
+                    </button>
+                    <button (click)="excluir.emit(i)"
+                        class="btn btn-danger ml-1">
+                        Excluír
+                    </button>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

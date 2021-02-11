@@ -1,16 +1,33 @@
-<h1 *ngIf="indiceEdicao == -1">Adicionar produto</h1>
-<h1 *ngIf="indiceEdicao > -1">Editar produto</h1>
+<div class="m-3">
+  <div class="row mb-3">
+    <div class="col-xl-3 col-sm-6 col-12">
+      <div class="card">
+        <div class="card-header">
+          <h5 *ngIf="indiceEdicao == -1">Adicionar produto</h5>
+          <h5 *ngIf="indiceEdicao > -1">Editar produto</h5>
+        </div>
+        <div class="card-body">
+          <label>Nome:</label>
+          <input type="text" [(ngModel)]="produto.nome" 
+            class="form-control">
+          <br>
+          <label>Preço:</label>
+          <input type="text" [(ngModel)]="produto.preco"
+            class="form-control">   
+        </div>
+        <div class="card-footer">
+          <button (click)="salvar()" 
+            class="btn btn-success float-right">
+            Salvar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
 
-<label>Nome:</label>
-<input type="text" [(ngModel)]="produto.nome">
-<br><br>
-<label>Preço:</label>
-<input type="text" [(ngModel)]="produto.preco">
-<br><br>
-<button (click)="salvar()">Salvar</button>
-
-<app-lista-de-produtos 
-  [produtos]="produtos"
-  (editar)="editar($event)"
-  (excluir)="excluir($event)"
-></app-lista-de-produtos>
+  <app-lista-de-produtos
+    [produtos]="produtos"
+    (editar)="editar($event)"
+    (excluir)="excluir($event)"
+  ></app-lista-de-produtos>
+</div>
