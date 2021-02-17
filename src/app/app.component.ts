@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { ToastrService } from 'ngx-toastr';
 import { Produto } from './produto.model';
 
@@ -12,9 +13,12 @@ export class AppComponent implements OnInit {
   produtos: Produto[] = [];
   produto: Produto = new Produto(null, null);
   indiceEdicao = -1;
+  modalExclusao: BsModalRef;
+  indiceExclusao = -1;
 
   constructor(
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private modalService: BsModalService
   ) {}
 
   ngOnInit() {
@@ -50,7 +54,7 @@ export class AppComponent implements OnInit {
 
   excluir(index) {
     this.produtos.splice(index, 1);
-    this.toastr.error('Excluído com sucesso');
+    this.toastr.success('Excluído com sucesso');
   }
 
   editar(index) {
@@ -60,4 +64,20 @@ export class AppComponent implements OnInit {
       this.produtos[index]
     );
   }
+
+  abrirModalExclusao(template: TemplateRef<any>, index) {
+    this.modalExclusao = this.modalService.show(template);
+    this.indiceExclusao = index;
+  }
+
+  fecharModalExclusao(excluir) {
+    this.modalExclusao.hide();
+
+    if (excluir) {
+      this.excluir(this.indiceExclusao);
+    }
+
+    this.indiceExclusao = -1;
+  }
+
 }

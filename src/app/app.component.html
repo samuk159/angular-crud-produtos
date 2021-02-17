@@ -28,6 +28,22 @@
   <app-lista-de-produtos
     [produtos]="produtos"
     (editar)="editar($event)"
-    (excluir)="excluir($event)"
+    (excluir)="abrirModalExclusao(templateModalExclusao, $event)"
   ></app-lista-de-produtos>
+
+  <ng-template #templateModalExclusao>
+    <div class="modal-header">
+      Excluír produto
+    </div>
+    <div *ngIf="indiceExclusao > -1" class="modal-body">
+      Tem certeza de que deseja excluir o produto 
+      {{produtos[indiceExclusao].nome}}?
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-secondary" 
+        (click)="fecharModalExclusao(false)">Não</button>
+      <button class="btn btn-primary"
+        (click)="fecharModalExclusao(true)">Sim</button>
+    </div>
+  </ng-template>
 </div>
