@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { Produto } from './produto.model';
 
 @Component({
@@ -12,7 +13,9 @@ export class AppComponent implements OnInit {
   produto: Produto = new Produto(null, null);
   indiceEdicao = -1;
 
-  constructor() {}
+  constructor(
+    private toastr: ToastrService
+  ) {}
 
   ngOnInit() {
     this.produtos.push(new Produto("Camiseta", 30.99));
@@ -42,10 +45,12 @@ export class AppComponent implements OnInit {
     
     this.produto = new Produto(null, null);
     this.indiceEdicao = -1;
+    this.toastr.success('Salvo com sucesso');
   }
 
   excluir(index) {
     this.produtos.splice(index, 1);
+    this.toastr.error('Excluído com sucesso');
   }
 
   editar(index) {

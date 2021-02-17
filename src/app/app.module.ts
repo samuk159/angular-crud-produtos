@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { PrecoPipe } from './preco.pipe';
 import { FormsModule } from '@angular/forms';
 import { ListaDeProdutosComponent } from './lista-de-produtos/lista-de-produtos.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import { ListaDeProdutosComponent } from './lista-de-produtos/lista-de-produtos.
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule, // required animations module
+    ToastrModule.forRoot(), // ToastrModule added
   ],
   providers: [],
   bootstrap: [AppComponent]
