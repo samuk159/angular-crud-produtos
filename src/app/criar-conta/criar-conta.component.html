@@ -1,0 +1,48 @@
+<div class="modal-header">
+    Criar Conta
+</div>
+<div class="modal-body">
+    <form [formGroup]="formularioDeUsuario" 
+        (ngSubmit)="criarConta()">
+
+        <label for="nome">Nome: </label>
+        <input type="text" formControlName="nome" 
+            class="form-control mb-3">
+
+        <label for="email">E-mail: </label>
+        <input type="text" formControlName="email"
+            class="form-control mb-3">
+
+        <label for="cpf">CPF: </label>
+        <input type="text" formControlName="cpf"
+            class="form-control mb-3">
+
+        <label for="nascimento">Nascimento: </label>
+        <input type="date" formControlName="dataDeNascimento"
+            class="form-control mb-3">
+
+        <div class="row">
+            <div class="col-6">
+                <label for="senha">Senha: </label>
+                <input type="password" formControlName="senha"
+                    class="form-control mb-3">
+            </div>
+            <div class="col-6">
+                <label for="confirmarSenha">
+                    Confirmar senha: 
+                </label>
+                <input type="password" 
+                    formControlName="confirmarSenha"
+                    class="form-control mb-3"> 
+            </div>
+        </div>   
+
+        <div>{{ formularioDeUsuario.value | json}}</div>
+        <div>{{ formularioDeUsuario.valid | json }}</div>
+
+        <button [disabled]="!formularioDeUsuario.valid"
+            class="btn btn-primary">
+            Criar Conta
+        </button>
+    </form>
+</div>

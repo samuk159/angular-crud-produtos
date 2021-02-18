@@ -4,17 +4,19 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PrecoPipe } from './preco.pipe';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ListaDeProdutosComponent } from './lista-de-produtos/lista-de-produtos.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { CriarContaComponent } from './criar-conta/criar-conta.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PrecoPipe,
-    ListaDeProdutosComponent
+    ListaDeProdutosComponent,
+    CriarContaComponent
   ],
   imports: [
     BrowserModule,
@@ -22,9 +24,13 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     FormsModule,
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot(), // ToastrModule added
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    ReactiveFormsModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [
+    CriarContaComponent
+  ]
 })
 export class AppModule { }

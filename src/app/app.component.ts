@@ -1,6 +1,7 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { ToastrService } from 'ngx-toastr';
+import { CriarContaComponent } from './criar-conta/criar-conta.component';
 import { Produto } from './produto.model';
 
 @Component({
@@ -15,6 +16,7 @@ export class AppComponent implements OnInit {
   indiceEdicao = -1;
   modalExclusao: BsModalRef;
   indiceExclusao = -1;
+  modalCriarConta: BsModalRef;
 
   constructor(
     private toastr: ToastrService,
@@ -78,6 +80,12 @@ export class AppComponent implements OnInit {
     }
 
     this.indiceExclusao = -1;
+  }
+
+  abrirModalDeCriacaoDeConta() {
+    this.modalCriarConta = this.modalService.show(
+      CriarContaComponent
+    );
   }
 
 }
